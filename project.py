@@ -1,6 +1,6 @@
 from match import match
 from menue import meal_db
-from typing import List, Tuple, Callable, Any
+from typing import List, Tuple, Callable, Any, Optional
 
 def get_name(meal: Tuple[str, str, str, str, List[str]]) -> str:
     return meal[0]
@@ -67,7 +67,12 @@ pa_list: List[Tuple[List[str], Callable[[List[str]], List[Any]]]] = [
     (["bye"], bye_action),
 ]
 
-#need to search list still
+def search_pa_list(query: List[str]) -> Tuple[Optional[List[str]], Optional[Callable[[List[str]], List[Any]]]]:
+    """Finds the matching pattern and corresponding action based on the input query."""
+    for pattern, action in pa_list:
+        if all(word in query for word in pattern):
+            return pattern, action
+    return [], None
 
 def query_loop() -> None:
     print("Welcome to the recipe database!\n")
@@ -75,20 +80,16 @@ def query_loop() -> None:
         try:
             print()
             query = input("Your query? ").replace("?", "").lower().split()
-            found = False
+            pattern, action = search_pa_list(query)
 
-            for pattern, action in pa_list:
-                if all(word in query for word in pattern):
-                    answers = action(query)
-                    if answers:
-                        for answer in answers:
-                            print(answer)
-                    else:
-                        print("No recipes found.")
-                    found = True
-                    break
-            
-            if not found:
+            if pattern and action:
+                answers = action(query)
+                if answers:
+                    for answer in answers:
+                        print(answer)
+                else:
+                    print("No recipes found.")
+            else:
                 print("Sorry, I didn't understand that.")
 
         except (KeyboardInterrupt, EOFError):
