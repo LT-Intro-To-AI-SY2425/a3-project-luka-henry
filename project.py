@@ -96,12 +96,40 @@ pa_list: List[Tuple[List[str], Callable[[List[str]], List[Any]]]] = [
     (["bye"], bye_action),
 ]
 
-def search_pa_list(query: List[str]) -> Tuple[Optional[List[str]], Optional[Callable[[List[str]], List[Any]]]]:
-    """Finds the matching pattern and corresponding action based on the input query."""
+import re
+from typing import List, Dict, Tuple, Union
+def search_pa_list(src: List[str]) -> List[str]:
+    """Takes source, finds matching pattern and calls corresponding action. If it finds
+    a match but has no answers it returns ["No answers"]. If it finds no match it
+    returns ["I don't understand"].
+
+    Args:
+        source - a phrase represented as a list of words (strings)
+
+    Returns:
+        a list of answers. Will be ["I don't understand"] if it finds no matches and
+        ["No answers"] if it finds a match but no answers
+    """
+    query_string = ' '.join(src)
+    
     for pattern, action in pa_list:
-        if all(word in query for word in pattern):
-            return pattern, action
-    return [], None
+        regex_pattern = re.sub(r'%|_', '(.*)', ' '.join(pattern))
+        
+        match = re.fullmatch(regex_pattern, query_string, re.IGNORECASE)
+        if match:
+            matches = list(match.groups())
+            responses = action(matches)
+            if not responses:
+                return ["No answers"]
+            return responses
+
+    return ["I don't understand"]
+# def search_pa_list(query: List[str]) -> Tuple[Optional[List[str]], Optional[Callable[[List[str]], List[Any]]]]:
+#     """Finds the matching pattern and corresponding action based on the input query."""
+#     for pattern, action in pa_list:
+#         if all(word in query for word in pattern):
+#             return pattern, action
+#     return [], None
 
 def query_loop() -> None:
     print("Welcome to the recipe database!\n")
