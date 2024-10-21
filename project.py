@@ -89,11 +89,10 @@ def bye_action(dummy: List[str]) -> None:
     raise KeyboardInterrupt
 
 pa_list: List[Tuple[List[str], Callable[[List[str]], List[Any]]]] = [
-    (str.split("What is the recipe for _"), recipe_by_name),
-    (str.split("What recipes use _"), recipe_by_mainIngredient),
-    (str.split("What _ recipes are there"), recipe_by_catagory),
-    (str.split("What recipes are from _"), recipe_by_location),
-
+    (["what", "is", "the", "recipe", "for"], recipe_by_name),
+    (["what", "recipes", "use"], recipe_by_mainIngredient),
+    (["what", "recipes", "are", "there"], recipe_by_catagory),
+    (["what", "recipes", "are", "from"], recipe_by_location),
     (["bye"], bye_action),
 ]
 

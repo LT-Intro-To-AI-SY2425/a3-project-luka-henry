@@ -1,6 +1,6 @@
-from typing import List
+from typing import List, Tuple
 
-meal_db: List[str, str, str, str, List[str]] = [
+meal_db: List[Tuple[str, str, str, str, List[str]]] = [
     (
         "Beef Brisket Pot Roast",  # name
         "Beef",  # main ingredient
