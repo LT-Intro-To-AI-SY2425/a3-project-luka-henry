@@ -144,84 +144,172 @@ meal_db: List[Tuple[str, str, str, str, List[str]]] = [
         ],  # other inredients
     ),
     (
-        "",  # name
-        "",  # main ingredient
-        "",  # category
-        "" #location of meal
+        "Spanish Tortilla",  # name
+        "Potatoes",  # main ingredient
+        "Vegetarian",  # category
+        "Spain" #location of meal
         [
-            
+            "Onion",
+            "Olive Oil",
+            "Butterm",
+            "Potatoes",
+            "Garlic",
+            "Eggs",
+            "Parsley",
+            "Baguette",
+            "Vine Tomatoes",
         ],  # other inredients
     ),
     (
-        "",  # name
-        "",  # main ingredient
-        "",  # category
-        "" #location of meal
+        "Beef stroganoff",  # name
+        "Beef",  # main ingredient
+        "Beef",  # category
+        "Russia" #location of meal
         [
-            
+            "Olive Oil",
+            "Onions",
+            "Garlic",
+            "Butterm",
+            "Mushrooms",
+            "Beef Fillet",
+            "Plain Flour",
+            "Creme Fraiche",
+            "English Mustard",
+            "Beef Stock",
+            "Parsley"
         ],  # other inredients
     ),
     (
-        "",  # name
-        "",  # main ingredient
-        "",  # category
-        "" #location of meal
+        "Chicken Enchilada Casserole",  # name
+        "Chicken",  # main ingredient
+        "Chicken",  # category
+        "Mexico" #location of meal
         [
-            
+            "Enchilada sauce",
+            "shredded Monterey Jack cheese",
+            "corn tortillas",
+            "chicken breasts"
+
         ],  # other inredients
     ),
     (
-        "",  # name
-        "",  # main ingredient
-        "",  # category
-        "" #location of meal
+        "Cajun spiced fish tacos",  # name
+        "Fish",  # main ingredient
+        "Seafood",  # category
+        "Mexico" #location of meal
         [
-            
+            "cajun",
+            "cayenne pepper",
+            "white fish",
+            "vegetable oil",
+            "flour tortilla",
+            "avocado",
+            "little gem lettuce",
+            "spring onion",
+            "salsa",
+            "sour cream",
+            "lemon",
+            "garlic"
+
         ],  # other inredients
     ),
     (
-        "",  # name
-        "",  # main ingredient
-        "",  # category
-        "" #location of meal
+        "Krispy Kreme Donut",  # name
+        "Donut",  # main ingredient
+        "Dessert",  # category
+        "USA" #location of meal
         [
-            
+            "Yeast",
+            "Water",
+            "Sugar",
+            "Salt",
+            "Eggs",
+            "Shortening",
+            "Flour",
+            "Canola Oil",
+            "Milk",
+            "Sugar",
+            "Vanilla",
+            "Boiling Water",
+            "Butter"
         ],  # other inredients
     ),
     (
-        "",  # name
-        "",  # main ingredient
-        "",  # category
-        "" #location of meal
+        "Pumpkin Pie",  # name
+        "Pumpkin",  # main ingredient
+        "Dessert",  # category
+        "USA" #location of meal
         [
-            
+            "Pumpkin",
+            "Shortcrust Pastry",
+            "Plain Flour",
+            "Caster Sugar",
+            "Salt",
+            "Nutmeg",
+            "Cinnamon",
+            "Eggs",
+            "Butter",
+            "Milk",
+            "Icing Sugar"
         ],  # other inredients
     ),
     (
-        "",  # name
-        "",  # main ingredient
-        "",  # category
-        "" #location of meal
+        "Grilled eggplant with coconut milk",  # name
+        "Eggplant",  # main ingredient
+        "Vegetarian",  # category
+        "Philippines" #location of meal
         [
-            
+            "Egg Plants",
+            "Coconut Milk",
+            "Lemon Juice",
+            "Salt",
+            "Red Pepper Flakes",
+            "Onions"
+
         ],  # other inredients
     ),
     (
-        "",  # name
-        "",  # main ingredient
-        "",  # category
-        "" #location of meal
+        "Lasagne",  # name
+        "Lasagne",  # main ingredient
+        "Pasta",  # category
+        "Italy" #location of meal
         [
-            
+            "Olive Oil",
+            "Bacon",
+            "Onion",
+            "Celery",
+            "Carrots",
+            "Garlic",
+            "Minced Beef",
+            "Tomato Puree",
+            "Chopped Tomatoes",
+            "Honey",
+            "Lasagne Sheets",
+            "Creme Fraiche",
+            "Mozzarella Balls",
+            "Parmesan Cheese",
+            "Basil Leaves"
         ],  # other inredients
     ),
     (
-        "",  # name
-        "",  # main ingredient
-        "",  # category
-        "" #location of meal
+        "Brown Stew Chicken",  # name
+        "Chicken",  # main ingredient
+        "Chicken",  # category
+        "Jamaica" #location of meal
         [
-            
+            "Chicken",
+            "Tomato",
+            "Onions",
+            "Garlic Clove",
+            "Red Pepper",
+            "Carrots",
+            "Lime",
+            "Thyme",
+            "Allspice",
+            "Soy Sauce",
+            "Cornstarch",
+            "Coconut Milk",
+            "Vegetable Oil"
         ],  # other inredients
     ),
     

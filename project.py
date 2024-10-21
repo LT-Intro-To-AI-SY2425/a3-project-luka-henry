@@ -18,42 +18,72 @@ def get_recipe(meal: Tuple[str, str, str, str, List[str]]) -> str:
 def recipe_by_name(matches: List[str]) -> List[str]:
     #takes input of name and returns assoicated recipe
 
-    name = str(matches[0])
-    result=[]
+    name = (matches[0])
+    result = set()
     for meal in meal_db:
         if get_name(meal) == name:
-            result.append(get_recipe (meal))
-    return result
+            result.update(get_recipe(meal))
+    return list(result)
 
 def recipe_by_mainIngredient(matches: List[str]) -> List[str]:
     #takes input of an ingredient and returns recipies with the same ingredient
 
-    mainIngredient = str(matches[1])
-    result=[]
+    mainIngredient = (matches[0])
+    result= set()
     for meal in meal_db:
         if get_mainIngredient(meal) == mainIngredient:
-            result.append(get_recipe (meal))
-    return result
+            result.update(get_recipe (meal))
+    return list(result)
 
 def recipe_by_catagory(matches: List[str]) -> List[str]:
     #takes an input of the catagory the food falls into; eg breakfast or seafood and returns all recipies match catagory
 
-    catagory = str(matches[2])
-    result=[]
+    catagory = (matches[0])
+    result= set()
     for meal in meal_db:
         if get_catagory(meal) == catagory:
-            result.append(get_recipe (meal))
-    return result  
+            result.update(get_recipe (meal))
+    return list(result) 
 
 def recipe_by_location(matches: List[str]) -> List[str]:
     #takes an input of a location and returns recipes from the specified location
     
-    location = str(matches[3])
-    result=[]
+    location = (matches[0])
+    result= set()
     for meal in meal_db:
         if get_location(meal) == location:
-            result.append(get_recipe (meal))
-    return result
+            result.update(get_recipe (meal))
+    return list(result)
+
+def name_by_recipie(matches: List[str]) -> List[str]:
+    if not matches or len(matches) != 1:
+        return []  
+    recipie = matches[0]
+    result = set()
+    for meal in meal_db:
+        if recipie in get_recipe(meal):  
+            result.add(get_name(meal))  
+
+    return list(result) 
+
+def name_by_locaion(matches: List[str]) -> List[str]:
+
+    location = matches[0]
+    result = []
+    for meal in meal_db:
+        if location in get_location(meal):
+            result.append(get_name(meal))
+    return(result)
+
+def name_by_mainIngredient(matches: List[str]) -> List[str]:
+
+    mainIngredient = matches[0]
+    result = []
+    for meal in meal_db:
+        if mainIngredient in get_mainIngredient(meal):
+            result.append(get_name(meal))
+    return(result)
+
 
 def bye_action(dummy: List[str]) -> None:
     raise KeyboardInterrupt
