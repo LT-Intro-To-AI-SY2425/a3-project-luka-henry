@@ -5,7 +5,7 @@ meal_db: List[Tuple[str, str, str, str, List[str]]] = [
         "Beef Brisket Pot Roast",  # name
         "Beef",  # main ingredient
         "Beef",  # category
-        "USA" #location of meal
+        "USA", #location of meal
         [
             "Beef Brisket",
             "Salt",
