@@ -127,3 +127,4 @@ def query_loop() -> None:
     print("\nSo long!\n")
 
 query_loop()
+#fix query loop
