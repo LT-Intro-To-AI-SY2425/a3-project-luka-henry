@@ -24,7 +24,7 @@ meal_db: List[str, str, str, str, List[str]] = [
         "Three Fish Pie",  # name
         "Fish",  # main ingredient
         "Seafood",  # category
-        "UK" #location of meal
+        "UK", #location of meal
         [
             "Potatoes",
             "Butter",
@@ -46,7 +46,7 @@ meal_db: List[str, str, str, str, List[str]] = [
         "Kung Po Prawns",  # name
         "Prawns",  # main ingredient
         "Seafood",  # category
-        "China" #location of meal
+        "China", #location of meal
         [
             "Prawns",
             "Soy Sauce",
@@ -66,7 +66,7 @@ meal_db: List[str, str, str, str, List[str]] = [
         "Irish stew",  # name
         "Beef",  # main ingredient
         "Beef",  # category
-        "Ireland" #location of meal
+        "Ireland", #location of meal
         [
             "whole wheat",
             "lamb loin chops",
@@ -87,7 +87,7 @@ meal_db: List[str, str, str, str, List[str]] = [
         "Chicken Basquaise",  # name
         "Chicken",  # main ingredient
         "Chicken",  # category
-        "Italy" #location of meal
+        "Italy", #location of meal
         [
             "Chicken",
             "Butter",
@@ -114,7 +114,7 @@ meal_db: List[str, str, str, str, List[str]] = [
         "Boulangère Potatoes",  # name
         "Potatoes",  # main ingredient
         "Side",  # category
-        "France" #location of meal
+        "France", #location of meal
         [
             "Onions",
             "Thyme",
@@ -127,7 +127,7 @@ meal_db: List[str, str, str, str, List[str]] = [
         "Chocolate Souffle",  # name
         "Chocolate",  # main ingredient
         "Dessert",  # category
-        "France" #location of meal
+        "France", #location of meal
         [
             "Single Cream",
             "Caster Sugar",
@@ -147,7 +147,7 @@ meal_db: List[str, str, str, str, List[str]] = [
         "Spanish Tortilla",  # name
         "Potatoes",  # main ingredient
         "Vegetarian",  # category
-        "Spain" #location of meal
+        "Spain", #location of meal
         [
             "Onion",
             "Olive Oil",
@@ -164,7 +164,7 @@ meal_db: List[str, str, str, str, List[str]] = [
         "Beef stroganoff",  # name
         "Beef",  # main ingredient
         "Beef",  # category
-        "Russia" #location of meal
+        "Russia", #location of meal
         [
             "Olive Oil",
             "Onions",
@@ -183,7 +183,7 @@ meal_db: List[str, str, str, str, List[str]] = [
         "Chicken Enchilada Casserole",  # name
         "Chicken",  # main ingredient
         "Chicken",  # category
-        "Mexico" #location of meal
+        "Mexico", #location of meal
         [
             "Enchilada sauce",
             "shredded Monterey Jack cheese",
@@ -196,7 +196,7 @@ meal_db: List[str, str, str, str, List[str]] = [
         "Cajun spiced fish tacos",  # name
         "Fish",  # main ingredient
         "Seafood",  # category
-        "Mexico" #location of meal
+        "Mexico", #location of meal
         [
             "cajun",
             "cayenne pepper",
@@ -217,7 +217,7 @@ meal_db: List[str, str, str, str, List[str]] = [
         "Krispy Kreme Donut",  # name
         "Donut",  # main ingredient
         "Dessert",  # category
-        "USA" #location of meal
+        "USA", #location of meal
         [
             "Yeast",
             "Water",
@@ -238,7 +238,7 @@ meal_db: List[str, str, str, str, List[str]] = [
         "Pumpkin Pie",  # name
         "Pumpkin",  # main ingredient
         "Dessert",  # category
-        "USA" #location of meal
+        "USA", #location of meal
         [
             "Pumpkin",
             "Shortcrust Pastry",
@@ -257,7 +257,7 @@ meal_db: List[str, str, str, str, List[str]] = [
         "Grilled eggplant with coconut milk",  # name
         "Eggplant",  # main ingredient
         "Vegetarian",  # category
-        "Philippines" #location of meal
+        "Philippines", #location of meal
         [
             "Egg Plants",
             "Coconut Milk",
@@ -272,7 +272,7 @@ meal_db: List[str, str, str, str, List[str]] = [
         "Lasagne",  # name
         "Lasagne",  # main ingredient
         "Pasta",  # category
-        "Italy" #location of meal
+        "Italy", #location of meal
         [
             "Olive Oil",
             "Bacon",
@@ -295,7 +295,7 @@ meal_db: List[str, str, str, str, List[str]] = [
         "Brown Stew Chicken",  # name
         "Chicken",  # main ingredient
         "Chicken",  # category
-        "Jamaica" #location of meal
+        "Jamaica", #location of meal
         [
             "Chicken",
             "Tomato",
