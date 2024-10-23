@@ -1,158 +1,482 @@
 from match import match
 from menue import meal_db
 from typing import List, Tuple, Callable, Any, Optional
+import re
+
+
+
+
+
+
+
 
 def get_name(meal: Tuple[str, str, str, str, List[str]]) -> str:
     return meal[0]
+
+
+
+
+
+
+
+
 def get_mainIngredient(meal: Tuple[str, str, str, str, List[str]]) -> str:
     return meal[1]
-def get_catagory(meal: Tuple[str, str, str, str, List[str]]) -> str:
+
+
+
+
+
+
+
+
+def get_category(meal: Tuple[str, str, str, str, List[str]]) -> str:
     return meal[2]
+
+
+
+
+
+
+
+
 def get_location(meal: Tuple[str, str, str, str, List[str]]) -> str:
     return meal[3]
-def get_recipe(meal: Tuple[str, str, str, str, List[str]]) -> str:
+
+
+
+
+
+
+
+
+def get_recipe(meal: Tuple[str, str, str, str, List[str]]) -> List[str]:
     return meal[4]
 
 
 
-def recipe_by_name(matches: List[str]) -> List[str]:
-    #takes input of name and returns assoicated recipe
 
-    name = (matches[0])
+
+
+
+
+def recipe_by_name(matches: List[str]) -> List[str]:
+    name = matches[0]
     result = set()
     for meal in meal_db:
-        if get_name(meal) == name:
+        if get_name(meal).lower() == name.lower():
             result.update(get_recipe(meal))
     return list(result)
 
-def recipe_by_mainIngredient(matches: List[str]) -> List[str]:
-    #takes input of an ingredient and returns recipies with the same ingredient
 
-    mainIngredient = (matches[0])
-    result= set()
-    for meal in meal_db:
-        if get_mainIngredient(meal) == mainIngredient:
-            result.update(get_recipe (meal))
-    return list(result)
 
-def recipe_by_catagory(matches: List[str]) -> List[str]:
-    #takes an input of the catagory the food falls into; eg breakfast or seafood and returns all recipies match catagory
 
-    catagory = (matches[0])
-    result= set()
-    for meal in meal_db:
-        if get_catagory(meal) == catagory:
-            result.update(get_recipe (meal))
-    return list(result) 
 
-def recipe_by_location(matches: List[str]) -> List[str]:
-    #takes an input of a location and returns recipes from the specified location
-    
-    location = (matches[0])
-    result= set()
-    for meal in meal_db:
-        if get_location(meal) == location:
-            result.update(get_recipe (meal))
-    return list(result)
 
-def name_by_recipie(matches: List[str]) -> List[str]:
-    if not matches or len(matches) != 1:
-        return []  
-    recipie = matches[0]
+
+
+# def recipe_by_mainIngredient(matches: List[str]) -> List[str]:
+#     mainIngredient = matches[0]
+#     result = set()
+#     for meal in meal_db:
+#         if get_mainIngredient(meal).lower() == mainIngredient.lower():
+#             result.update(get_recipe(meal))
+#     return list(result)
+
+
+
+
+
+
+
+
+# def recipe_by_category(matches: List[str]) -> List[str]:
+#     category = matches[0]
+#     result = set()
+#     for meal in meal_db:
+#         if get_category(meal).lower() == category.lower():
+#             result.update(get_recipe(meal))
+#     return list(result)
+
+
+
+
+
+
+
+
+# def recipe_by_location(matches: List[str]) -> List[str]:
+#     location = matches[0]
+#     result = set()
+#     for meal in meal_db:
+#         if get_location(meal).lower() == location.lower():
+#             result.update(get_recipe(meal))
+#     return list(result)
+
+
+
+
+
+
+
+
+def name_by_recipe(matches: List[str]) -> List[str]:
+    recipe = matches[0]
     result = set()
     for meal in meal_db:
-        if recipie in get_recipe(meal):  
-            result.add(get_name(meal))  
+        if recipe.lower() in [step.lower() for step in get_recipe(meal)]:
+            result.add(get_name(meal))
+    return list(result)
 
-    return list(result) 
 
-def name_by_locaion(matches: List[str]) -> List[str]:
 
+
+
+
+
+
+def name_by_location(matches: List[str]) -> List[str]:
     location = matches[0]
     result = []
     for meal in meal_db:
-        if location in get_location(meal):
+        if location.lower() in get_location(meal).lower():
             result.append(get_name(meal))
-    return(result)
+    return result
+
+
+
+
+
+
+
 
 def name_by_mainIngredient(matches: List[str]) -> List[str]:
-
     mainIngredient = matches[0]
     result = []
     for meal in meal_db:
-        if mainIngredient in get_mainIngredient(meal):
+        if mainIngredient.lower() in get_mainIngredient(meal).lower():
             result.append(get_name(meal))
-    return(result)
+    return result
+
+
+
+
+def location_by_name(matches: List[str]) -> List[str]:
+    name = matches[0]
+    result = []
+    for meal in meal_db:
+        if name.lower() in get_name(meal).lower():
+            result.append(get_location(meal))
+    return result
+
+
+
+
+def name_by_category(matches: List[str]) -> List[str]:
+    category = matches[0]
+    result = []
+    for meal in meal_db:
+        if category.lower() in get_category(meal).lower():
+            result.append(get_name(meal))
+    return result
+
+
+def location_by_category(matches: List[str]) -> List[str]:
+    category = matches[0]
+    result = []
+    for meal in meal_db:
+        if category.lower() in get_category(meal).lower():
+            result.append(get_location(meal))
+    return result
+
+
+
+
+
+
+
+
+def location_by_mainIngredient(matches: List[str]) -> List[str]:
+    mainIngredient = matches[0]
+    result = []
+    for meal in meal_db:
+        if mainIngredient.lower() in get_mainIngredient(meal).lower():
+            result.append(get_location(meal))
+    return result
+
+
+
+
+
+
+
+
+def location_by_recipe(matches: List[str]) -> List[str]:
+    recipe = matches[0]
+    result = []
+    for meal in meal_db:
+        if recipe.lower() in [step.lower() for step in get_recipe(meal)]:
+            result.append(get_location(meal))
+    return result
+
+
+
+
+
+
+
+
+def category_by_name(matches: List[str]) -> List[str]:
+    name = matches[0]
+    result = []
+    for meal in meal_db:
+        if name.lower() in get_name(meal).lower():
+            result.append(get_category(meal))
+    return result
+
+
+
+
+
+
+
+
+def category_by_location(matches: List[str]) -> List[str]:
+    location = matches[0]
+    result = []
+    for meal in meal_db:
+        if location.lower() in get_location(meal).lower():
+            result.append(get_category(meal))
+    return result
+
+
+
+
+
+
+
+
+def category_by_recipe(matches: List[str]) -> List[str]:
+    recipe = matches[0]
+    result = []
+    for meal in meal_db:
+        if recipe.lower() in [step.lower() for step in get_recipe(meal)]:
+            result.append(get_category(meal))
+    return result
+
+
+
+
+
+
+
+
+def category_by_mainIngredient(matches: List[str]) -> List[str]:
+    mainIngredient = matches[0]
+    result = []
+    for meal in meal_db:
+        if mainIngredient.lower() in get_mainIngredient(meal).lower():
+            result.append(get_category(meal))
+    return result
+
+
+
+
+
+
+
+
+def mainIngredient_by_recipe(matches: List[str]) -> List[str]:
+    recipe = matches[0]
+    result = []
+    for meal in meal_db:
+        if recipe.lower() in [step.lower() for step in get_recipe(meal)]:
+            result.append(get_mainIngredient(meal))
+    return result
+
+
+
+
+
+
+
+
+def mainIngredient_by_name(matches: List[str]) -> List[str]:
+    name = matches[0]
+    result = []
+    for meal in meal_db:
+        if name.lower() in get_name(meal).lower():
+            result.append(get_mainIngredient(meal))
+    return result
+
+
+
+
+
+
+
+
+def mainIngredient_by_category(matches: List[str]) -> List[str]:
+    category = matches[0]
+    result = []
+    for meal in meal_db:
+        if category.lower() in get_category(meal).lower():
+            result.append(get_mainIngredient(meal))
+    return result
+
+
+
+
+
+
+
+
+def mainIngredient_by_location(matches: List[str]) -> List[str]:
+    location = matches[0]
+    result = []
+    for meal in meal_db:
+        if location.lower() in get_location(meal).lower():
+            result.append(get_mainIngredient(meal))
+    return result
+
+
 
 
 def bye_action(dummy: List[str]) -> None:
     raise KeyboardInterrupt
 
+
+
+
+
+
+
+
 pa_list: List[Tuple[List[str], Callable[[List[str]], List[Any]]]] = [
-    (["what", "is", "the", "recipe", "for"], recipe_by_name),
-    (["what", "recipes", "use"], recipe_by_mainIngredient),
-    (["what", "recipes", "are", "there"], recipe_by_catagory),
-    (["what", "recipes", "are", "from"], recipe_by_location),
+    (str.split("what is the recipe for %"), recipe_by_name),
+    (str.split("where is % from"), location_by_name),
+    (str.split("what places make %"), location_by_category),
+    (str.split("what places use % as a main ingredient"), location_by_mainIngredient),
+    (str.split("what places have meals that include %"), location_by_recipe),
+    (str.split("what type of dish is %"), category_by_name),
+    (str.split("what dishes are made in %"), category_by_location),
+    (str.split("what type of dish uses %"), category_by_recipe),
+    (str.split("what category of food is % the main ingredient in"), category_by_mainIngredient),
+    (str.split("what is the main ingredient of a meal that contains %"), mainIngredient_by_recipe),
+    (str.split("what is the main ingredient in %"), mainIngredient_by_name),
+    (str.split("what are the main ingredients in % dishes"), mainIngredient_by_category),
+    (str.split("what are some common main ingredients in % cuisine"), mainIngredient_by_location),
+    (str.split("what meals contain %"), name_by_recipe),
+    (str.split("what meals are _"), name_by_category),
+    (str.split("what meals are from %"), name_by_location),
+    (str.split("what meals use % as a main ingredient"), name_by_mainIngredient),
     (["bye"], bye_action),
 ]
 
-import re
-from typing import List, Dict, Tuple, Union
+
+
+
+
+
+
+
 def search_pa_list(src: List[str]) -> List[str]:
-    """Takes source, finds matching pattern and calls corresponding action. If it finds
-    a match but has no answers it returns ["No answers"]. If it finds no match it
-    returns ["I don't understand"].
-
-    Args:
-        source - a phrase represented as a list of words (strings)
-
-    Returns:
-        a list of answers. Will be ["I don't understand"] if it finds no matches and
-        ["No answers"] if it finds a match but no answers
-    """
-    query_string = ' '.join(src)
-    
+    user_input = ' '.join(src).lower()
+   
     for pattern, action in pa_list:
-        regex_pattern = re.sub(r'%|_', '(.*)', ' '.join(pattern))
-        
-        match = re.fullmatch(regex_pattern, query_string, re.IGNORECASE)
-        if match:
-            matches = list(match.groups())
-            responses = action(matches)
+        match_result = match(pattern, user_input.split())
+        if match_result is not None:
+            responses = action(match_result)
             if not responses:
                 return ["No answers"]
             return responses
-
+   
     return ["I don't understand"]
-# def search_pa_list(query: List[str]) -> Tuple[Optional[List[str]], Optional[Callable[[List[str]], List[Any]]]]:
-#     """Finds the matching pattern and corresponding action based on the input query."""
-#     for pattern, action in pa_list:
-#         if all(word in query for word in pattern):
-#             return pattern, action
-#     return [], None
+
+
+
+
+
+
+
 
 def query_loop() -> None:
-    print("Welcome to the recipe database!\n")
+    print("Welcome to the recipe database!")
     while True:
         try:
-            print()
-            query = input("Your query? ").replace("?", "").lower().split()
-            pattern, action = search_pa_list(query)
-
-            if pattern and action:
-                answers = action(query)
-                if answers:
-                    for answer in answers:
-                        print(answer)
-                else:
-                    print("No recipes found.")
+            query = input("what would you like to know? ").strip()
+            if query.lower() == "bye":
+                break
+            responses = search_pa_list(query.lower().split())
+            if responses == ["I don't understand"]:
+                print("I don't understand")
+            elif responses == ["No answers"]:
+                print("No answers")
             else:
-                print("Sorry, I didn't understand that.")
-
-        except (KeyboardInterrupt, EOFError):
+                for response in responses:
+                    print(response)
+        except KeyboardInterrupt:
             break
+    print("\nGet outta here! ")
 
-    print("\nSo long!\n")
 
-query_loop()
-#fix query loop
+
+
+
+
+def test_search_pa_list():
+    assert search_pa_list(["what", "is", "the", "recipe", "for", "Beef Brisket Pot Roast"]) == [
+        "Beef Brisket", "Salt", "Onion", "Garlic", "Thyme", "Rosemary", "Bay Leaves", 
+        "beef stock", "Carrots", "Mustard", "Potatoes"
+    ], "failed search_pa_list test for recipe by name"
+
+    assert search_pa_list(["where", "is", "Lasagne", "from"]) == ["Italy"], "failed search_pa_list test for location by name"
+
+    assert sorted(search_pa_list(["what", "meals", "contain", "Chicken"])) == sorted(
+        ["Chicken Basquaise", "Brown Stew Chicken", "Chicken Enchilada Casserole"]
+    ), "failed search_pa_list test for meals containing ingredient"
+
+    assert sorted(search_pa_list(["what", "meals", "are", "Beef"])) == sorted(
+        ["Beef Brisket Pot Roast", "Irish stew", "Beef stroganoff"]
+    ), "failed search_pa_list test for meals by category"
+
+    assert sorted(search_pa_list(["what", "meals", "are", "from", "France"])) == sorted(
+        ["Boulangère Potatoes", "Chocolate Souffle"]
+    ), "failed search_pa_list test for meals by location"
+
+    assert sorted(search_pa_list(["what", "meals", "use", "beef", "as", "main", "ingredient"])) == sorted(
+        ["Beef Brisket Pot Roast", "Irish stew", "Beef stroganoff"]
+    ), "failed search_pa_list test for meals by main ingredient"
+
+    assert sorted(search_pa_list(["what", "places", "make", "Beef"])) == sorted(
+        ["USA", "Ireland", "Russia"]
+    ), "failed search_pa_list test for places by category"
+
+    assert sorted(search_pa_list(["what", "places", "make", "beef", "dishes"])) == sorted(
+        ["USA", "Ireland", "Russia"]
+    ), "failed search_pa_list test for places by main ingredient"
+
+    assert search_pa_list(["where", "is", "Lasagne", "made"]) == ["Italy"], "failed search_pa_list test for location by recipe"
+
+    assert search_pa_list(["what", "type", "of", "dish", "is", "Lasagne"]) == ["Pasta"], "failed search_pa_list test for category by name"
+
+    assert sorted(search_pa_list(["what", "dishes", "are", "made", "in", "Italy"])) == sorted(
+        ["Chicken Basquaise", "Lasagne"]
+    ), "failed search_pa_list test for category by location"
+
+    assert search_pa_list(["what", "type", "of", "dish", "uses", "beef"]) == ["Beef"], "failed search_pa_list test for category by recipe"
+
+    assert search_pa_list(["what", "category", "of", "food", "is", "beef", "the", "main", "ingredient", "in"]) == ["Beef"], "failed search_pa_list test for category by main ingredient"
+
+    assert search_pa_list(["what", "is", "the", "main", "ingredient", "in", "Lasagne"]) == ["Lasagne"], "failed search_pa_list test for main ingredient by recipe"
+
+    assert search_pa_list(["what", "is", "the", "main", "ingredient", "in", "Lasagne"]) == ["Lasagne"], "failed search_pa_list test for main ingredient by name"
+
+    assert search_pa_list(["what", "is", "the", "main", "ingredient", "in", "Beef", "dishes"]) == ["Beef"], "failed search_pa_list test for main ingredient by category"
+
+    assert search_pa_list(["what", "is", "a", "common", "main", "ingredient", "in", "Italian", "cuisine"]) == ["Chicken"], "failed search_pa_list test for main ingredient by location"
+
+    print("All tests passed!")
+
+if __name__ == "__main__":
+    query_loop()
