@@ -422,4 +422,61 @@ def query_loop() -> None:
 
 
 
-query_loop()
+
+
+def test_search_pa_list():
+    assert search_pa_list(["what", "is", "the", "recipe", "for", "Beef Brisket Pot Roast"]) == [
+        "Beef Brisket", "Salt", "Onion", "Garlic", "Thyme", "Rosemary", "Bay Leaves", 
+        "beef stock", "Carrots", "Mustard", "Potatoes"
+    ], "failed search_pa_list test for recipe by name"
+
+    assert search_pa_list(["where", "is", "Lasagne", "from"]) == ["Italy"], "failed search_pa_list test for location by name"
+
+    assert sorted(search_pa_list(["what", "meals", "contain", "Chicken"])) == sorted(
+        ["Chicken Basquaise", "Brown Stew Chicken", "Chicken Enchilada Casserole"]
+    ), "failed search_pa_list test for meals containing ingredient"
+
+    assert sorted(search_pa_list(["what", "meals", "are", "Beef"])) == sorted(
+        ["Beef Brisket Pot Roast", "Irish stew", "Beef stroganoff"]
+    ), "failed search_pa_list test for meals by category"
+
+    assert sorted(search_pa_list(["what", "meals", "are", "from", "France"])) == sorted(
+        ["Boulangère Potatoes", "Chocolate Souffle"]
+    ), "failed search_pa_list test for meals by location"
+
+    assert sorted(search_pa_list(["what", "meals", "use", "beef", "as", "main", "ingredient"])) == sorted(
+        ["Beef Brisket Pot Roast", "Irish stew", "Beef stroganoff"]
+    ), "failed search_pa_list test for meals by main ingredient"
+
+    assert sorted(search_pa_list(["what", "places", "make", "Beef"])) == sorted(
+        ["USA", "Ireland", "Russia"]
+    ), "failed search_pa_list test for places by category"
+
+    assert sorted(search_pa_list(["what", "places", "make", "beef", "dishes"])) == sorted(
+        ["USA", "Ireland", "Russia"]
+    ), "failed search_pa_list test for places by main ingredient"
+
+    assert search_pa_list(["where", "is", "Lasagne", "made"]) == ["Italy"], "failed search_pa_list test for location by recipe"
+
+    assert search_pa_list(["what", "type", "of", "dish", "is", "Lasagne"]) == ["Pasta"], "failed search_pa_list test for category by name"
+
+    assert sorted(search_pa_list(["what", "dishes", "are", "made", "in", "Italy"])) == sorted(
+        ["Chicken Basquaise", "Lasagne"]
+    ), "failed search_pa_list test for category by location"
+
+    assert search_pa_list(["what", "type", "of", "dish", "uses", "beef"]) == ["Beef"], "failed search_pa_list test for category by recipe"
+
+    assert search_pa_list(["what", "category", "of", "food", "is", "beef", "the", "main", "ingredient", "in"]) == ["Beef"], "failed search_pa_list test for category by main ingredient"
+
+    assert search_pa_list(["what", "is", "the", "main", "ingredient", "in", "Lasagne"]) == ["Lasagne"], "failed search_pa_list test for main ingredient by recipe"
+
+    assert search_pa_list(["what", "is", "the", "main", "ingredient", "in", "Lasagne"]) == ["Lasagne"], "failed search_pa_list test for main ingredient by name"
+
+    assert search_pa_list(["what", "is", "the", "main", "ingredient", "in", "Beef", "dishes"]) == ["Beef"], "failed search_pa_list test for main ingredient by category"
+
+    assert search_pa_list(["what", "is", "a", "common", "main", "ingredient", "in", "Italian", "cuisine"]) == ["Chicken"], "failed search_pa_list test for main ingredient by location"
+
+    print("All tests passed!")
+
+if __name__ == "__main__":
+    query_loop()
