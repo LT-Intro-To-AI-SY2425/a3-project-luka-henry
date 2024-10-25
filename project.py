@@ -425,10 +425,6 @@ def query_loop() -> None:
 
 
 def test_search_pa_list():
-    # assert isinstance(title_by_actor(["orson welles"]), list), "title_by_actor not returning a list"
-    # assert sorted(title_by_actor(["orson welles"])) == sorted(
-    #     ["citizen kane", "othello"]
-    # ), "failed title_by_actor test"
     assert isinstance(recipe_by_name(["Beef Brisket Pot Roast"]), list), "recipe_by_name not returning a list"
     assert sorted(recipe_by_name(["Beef Brisket Pot Roast"])) == sorted(
         ["Beef Brisket", "Salt", "Onion", "Garlic", "Thyme", "Rosemary", "Bay Leaves", 
@@ -438,13 +434,13 @@ def test_search_pa_list():
     assert isinstance(location_by_name(["Lasagne"]), list), "location_by_name not returning a list"
     assert sorted(location_by_name(["Lasagne"])) == ["Italy"], "Lasagne should be found in Italy"
 
-    assert isinstance(name_by_mainIngredient(["Chicken"]), list), "name_by_mainIngredient not returning a list"
-    assert sorted(name_by_mainIngredient(["Chicken"])) == sorted(
+    assert isinstance(name_by_category(["Chicken"]), list), "name_by_category not returning a list"
+    assert sorted(name_by_category(["Chicken"])) == sorted(
         ["Chicken Basquaise", "Brown Stew Chicken", "Chicken Enchilada Casserole"]
     ), "Chicken dishes should include Chicken Basquaise, Brown Stew Chicken, and Chicken Enchilada Casserole"
 
-    assert isinstance(name_by_mainIngredient(["Beef"]), list), "name_by_mainIngredient not returning a list"
-    assert sorted(name_by_mainIngredient(["Beef"])) == sorted(
+    assert isinstance(name_by_recipe(["Beef"]), list), "name_by_recipe not returning a list"
+    assert sorted(name_by_recipe(["Beef"])) == sorted(
         ["Beef Brisket Pot Roast", "Irish stew", "Beef stroganoff"]
     ), "Beef dishes should include Beef Brisket Pot Roast, Irish stew, and Beef stroganoff"
 
@@ -453,7 +449,7 @@ def test_search_pa_list():
         ["Boulangère Potatoes", "Chocolate Souffle"]
     ), "Dishes from France should include Boulangère Potatoes and Chocolate Souffle"
 
-    # assert isinstance(location_by_name(["beef"]), list), "location_by_name not returning a list"
+    # assert isinstance(name_by_mainIngredient(["beef"]), list), "location_by_name not returning a list"
     # assert sorted(location_by_name(["beef"])) == sorted(
     #     ["Beef Brisket Pot Roast", "Irish stew", "Beef stroganoff"]
     # ), "Dishes using beef as the main ingredient should include Beef Brisket Pot Roast, Irish stew, and Beef stroganoff"
